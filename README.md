@@ -1,50 +1,20 @@
-# React + TypeScript + Vite
+AWS Workshop implementation for an AI Based recipe app
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+#### **Components**
+- **Frontend:** Built using AWS Amplify
+- **Authentication:** Managed through Amazon Cognito
+- **Backend:** Implemented using AWS Lambda and AWS AppSync (GraphQL API) 
+- **AI Processing:** Amazon Bedrock - Claude 3 Sonnet foundation model
 
-Currently, two official plugins are available:
+### **Workflow**
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+<img src="./architecture.png">
 
-## Expanding the ESLint configuration
+1. **User Input:** The user enters ingredients via the web interface.
+2. **Request Processing:** The frontend sends the request to the backend via AWS AppSync.
+3. **AI Model Invocation:** AWS Lambda processes the request and invokes Amazon Bedrock's Claude 3 Sonnet model to generate a recipe.
+4. **Response Delivery:** The AI-generated recipe is sent back to the frontend and displayed to the user.<br>
+<br>
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
 
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
-
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
-
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+<img src="./screenshot.png">
